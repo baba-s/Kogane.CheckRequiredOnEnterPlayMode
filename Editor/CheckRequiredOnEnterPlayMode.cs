@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
@@ -131,9 +132,13 @@ namespace Kogane.Internal
 
                     foreach ( var field in fields )
                     {
-                        var attrs = field.GetCustomAttributes( typeof( RequiredAttribute ), true );
+                        var isRequired = field
+                                .GetCustomAttributes( typeof( RequiredAttribute ), true )
+                                .Concat( field.GetCustomAttributes( typeof( NotNullAttribute ), true ) )
+                                .Any()
+                            ;
 
-                        if ( attrs.Length <= 0 ) continue;
+                        if ( !isRequired ) continue;
 
                         var value = field.GetValue( component );
 
