@@ -6,7 +6,7 @@ namespace Kogane.Internal
     /// <summary>
     /// 設定を管理するクラス
     /// </summary>
-    [FilePath( "UserSettings/Kogane/CheckRequiredOnEnterPlayMode.asset", FilePathAttribute.Location.ProjectFolder )]
+    [FilePath( "UserSettings/Kogane/CheckRequiredOnEnterPlayModeSetting.asset", FilePathAttribute.Location.ProjectFolder )]
     internal sealed class CheckRequiredOnEnterPlayModeSetting : ScriptableSingleton<CheckRequiredOnEnterPlayModeSetting>
     {
         private const bool   DEFAULT_IS_ENABLE  = false;
